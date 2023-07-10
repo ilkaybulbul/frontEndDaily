@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap');
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+html, body {
+    font-family: 'Oxygen', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color:rgb(143, 28, 196);
+}
+
+nav {
+    display: grid;
+    width: auto;
+    background: white;
+    
+}
+
+.nav-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+}
+
+.nav-center h4 {
+    font-size: 2rem;
+    color:#161b31
+}
+
+.nav-links {
+    display: flex;
+    font-size: 1.5rem;
+    list-style: none;
+    flex-direction: row;
+    color:rgb(143, 28, 196);
+}
+
+.nav-links a{
+    margin: 10px;
+    font-weight: 600;
+}
+
+main {
+    display: grid;
+    width: auto;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.container h2 {
+    margin: 30px;
+    font-size: 2rem;
+    font-weight: 800;
+    color: azure;
+}
+
+.container span {
+    font-size: 2rem;
+    margin: 20px;
+}
+
+.color-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background: #161b31;
+    border-radius: 30px;
+
+}
+
+.btn {
+    --width: 150px;
+    --timing: 2s;
+    border: 0;
+    width: var(--width);
+    padding-block: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    background: #068FFF;
+    transition: all 0.2s;
+    border-radius: 3px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-image: linear-gradient(to right, rgb(250, 82, 82), rgb(250, 82, 82) 16.65%, rgb(190, 75, 219) 16.65%, rgb(190, 75, 219) 33.3%, rgb(76, 110, 245) 33.3%, rgb(76, 110, 245) 49.95%, rgb(64, 192, 87) 49.95%, rgb(64, 192, 87) 66.6%, rgb(250, 176, 5) 66.6%, rgb(250, 176, 5) 83.25%, rgb(253, 126, 20) 83.25%, rgb(253, 126, 20) 100%, rgb(250, 82, 82) 100%);
+    animation: var(--timing) linear dance6123 infinite;
+    transform: scale(1.1) translateY(-1px);
+  }
+  
+  @keyframes dance6123 {
+    to {
+      background-position: var(--width);
+    }
+  }
+

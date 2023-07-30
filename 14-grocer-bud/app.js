@@ -5,7 +5,7 @@ const grocery = document.getElementById('grocery');
 const submitBtn = document.querySelector('.submit-btn');
 const container = document.querySelector('.grocery-container');
 const list = document.querySelector('.grocery-list');
-const clearBtn = document.querySelector('.delete-btn');
+const clearBtn = document.querySelector('.clear-btn');
 
 
 // edit option
@@ -15,6 +15,12 @@ let editID = "";
 // ****** EVENT LISTENERS **********
 // submit form 
 form.addEventListener('submit', addItem);
+
+//clear items
+clearBtn.addEventListener('click', clearItems);
+
+
+
 // ****** FUNCTIONS **********
 function addItem(e) {
     e.preventDefault();
@@ -28,7 +34,9 @@ function addItem(e) {
         //add class
 
         element.classList.add('grocery-item');
+
         // add id 
+
         const attr = document.createAttribute("data-id");
         attr.value = id;
         element.setAttributeNode(attr);
@@ -42,15 +50,23 @@ function addItem(e) {
                 <i class="fas fa-trash"></i>
             </button>
         </div>`;
-
+        // edit function
+         const deleteBtn = element.querySelector('delete-btn');
+         const editBtn = element.querySelector('edit-btn');
+         deleteBtn.addEventListener('click', deleteItem);
+         editBtn.addEventListener('click', editItem);
         // append child
         list.appendChild(element);
-
         //display alert
-
         displayAlert('item added successfully','success');
-
+        // show container
         container.classList.add('show-container');
+
+        //add to local storage
+        addToLocalStorage(id, value);
+
+        //set the back default 
+        setBackToDefault();
 
     }
 
@@ -64,7 +80,10 @@ function addItem(e) {
         displayAlert("Please enter value", "danger");
         
     }
+
+    
 }
+
 
 // display alert 
 function displayAlert(text, action) {
@@ -79,6 +98,56 @@ function displayAlert(text, action) {
 
         },1000)
 }
+
+//delete function
+function deleteItem(e){
+    const element = e.currentTarget.parentElment.parentElment;
+    const id = element.dataset.id;
+    list.removeChild(element)
+    if(list.children.length == 0){
+        container.classList.remove('show-container');
+    }
+    displayAlert("item removed", 'danger')
+    setBackToDefault();
+    // remove from local storage
+    // removeFromLocalStorage(id);
+}
+
+// edit function
+
+function editItem(){
+
+}
+
+//clear items
+ function clearItems() {
+    const items = document.querySelectorAll('.grocery-item');
+
+    if(items.length > 0) {
+        items.forEach(function(item) {
+            list.removeChild(item);
+        })
+    }
+    container.classList.remove('show-container');
+    displayAlert("empty list", "danger")
+    // localStorage.removeItem('list');
+ }
+
+function setBackToDefault() {
+    grocery.value = "";
+    editFlag = false;
+    editID = "";
+    submitBtn.textContent="submit";
+}
+
 // ****** LOCAL STORAGE **********
+
+function addToLocalStorage(id, value) {
+    console.log("added local storage")
+}
+
+function removeFromLocalStorage(id) {
+
+}
 
 // ****** SETUP ITEMS **********
